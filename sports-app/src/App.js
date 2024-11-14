@@ -68,6 +68,10 @@ function App() {
     setintroModalOpen(false);
   };
 
+  const openintroModal = () => {
+    setintroModalOpen(true);
+  };
+
   const setCurTeam = (in_team) => {
     if (curModal === '1') {
       setCurTeam1(in_team)
@@ -176,8 +180,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="h1 text-center my-5">VERSUS
-      </div>
+      <div className="h1 text-center my-5" onClick={openintroModal}>VERSUS</div>
 
       <div className="container text-center mt-2">
       <div className="row">
@@ -314,7 +317,7 @@ function App() {
     {modalOpen && (
         <>
           <div className="modal-backdrop fade show " onClick={closeModal}></div>
-          <div className="modal show mt-5" style={{ display: 'block', minHeight:'80%' }} onClick={(e) => e.stopPropagation()}>
+          <div className="modal show mt-8" style={{ display: 'block', minHeight:'80%' }} onClick={(e) => e.stopPropagation()}>
             <div className="modal-dialog" onClick={(e) => e.stopPropagation()}>
               <div className="modal-content">
                 <div className="modal-header">
@@ -377,10 +380,10 @@ function App() {
           </div>
         </>
       )}
-    <div className="text-center text-light py-3">
-      <img src="./logo_v.jpeg" alt="footer logo" style={{ maxHeight: '50px' }} />
-      <p>&copy; Play Versus</p>
-    </div>
+      <div className="text-center text-light py-3" onClick={openintroModal}>
+        <img src="./logo_v.jpeg" alt="footer logo" style={{ maxHeight: '50px' }} />
+        <p>&copy; Play Versus </p>
+      </div>
 
 
 
