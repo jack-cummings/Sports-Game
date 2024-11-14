@@ -51,7 +51,7 @@ function App() {
   const gameOfDay = game_list.filter(event => event[0] === currentDate);
   const teams_correct = [gameOfDay[0][1],gameOfDay[0][2]]
   const game_time = gameOfDay[0][3]
-  
+
   const ansTeam1 = team_lib.find(row => row.team === teams_correct[0]);
   const ansTeam2 = team_lib.find(row => row.team === teams_correct[1]);
 
@@ -253,7 +253,7 @@ function App() {
           maxWidth: '80%' ,
           flexDirection: 'column', // Stack items vertically
         }}>
-        <div className="text-white  " style={{ marginBottom: '2px' }}>{isCorrect ? 'Great Job!': "Better luck next time"}</div>
+        <div className="text-white  " style={{ marginBottom: '2px' }}>{isCorrect ? 'Great Job!': "Better luck tomorrow"}</div>
         <div className="h5 text-center" style={{ marginBottom: '2px' }}>{teams_correct[0]+ ' VS ' + teams_correct[1]}</div>
         <div className="small text-center" style={{ marginBottom: '6px' }}>{game_time}</div>
 
@@ -313,8 +313,8 @@ function App() {
 
     {modalOpen && (
         <>
-          <div className="modal-backdrop fade show" onClick={closeModal}></div>
-          <div className="modal show" style={{ display: 'block' }} onClick={(e) => e.stopPropagation()}>
+          <div className="modal-backdrop fade show " onClick={closeModal}></div>
+          <div className="modal show mt-5" style={{ display: 'block', minHeight:'80%' }} onClick={(e) => e.stopPropagation()}>
             <div className="modal-dialog" onClick={(e) => e.stopPropagation()}>
               <div className="modal-content">
                 <div className="modal-header">
