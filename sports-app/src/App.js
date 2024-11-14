@@ -51,7 +51,7 @@ function App() {
   const gameOfDay = game_list.filter(event => event[0] === currentDate);
   const teams_correct = [gameOfDay[0][1],gameOfDay[0][2]]
   const game_time = gameOfDay[0][3]
-
+  
   const ansTeam1 = team_lib.find(row => row.team === teams_correct[0]);
   const ansTeam2 = team_lib.find(row => row.team === teams_correct[1]);
 
