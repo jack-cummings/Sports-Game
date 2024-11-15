@@ -328,18 +328,20 @@ function App() {
   <>
     <div className="modal-backdrop fade show" onClick={closeintroModal}></div>
     <div className="modal show" style={{ display: 'block' }} onClick={(e) => e.stopPropagation()}>
-      <div className="popup-overlay d-flex justify-content-center align-items-center" onClick={closeintroModal}>
-        <div className="popup-content card bg-dark text-light p-4 shadow-lg rounded animate__animated animate__fadeIn">
+      <div className="popup-overlay d-flex justify-content-center align-items-center " onClick={closeintroModal}>
+        <div className="popup-content card bg-black text-white p-4 shadow-lg rounded animate__animated animate__fadeIn" style= {{borderColor: 'white', borderWidth: '1px', borderStyle: 'solid' }} onClick={closeintroModal}>
+       
           <h1 className="card-title text-center mb-3" style={{ fontSize: '2.5rem' }}>How to Play</h1>
-          <h3 className="card-title text-center mb-3" style={{ fontSize: '2rem' }}>VERSUS</h3>
+          {/* <h3 className="card-title text-center mb-3" style={{ fontSize: '2rem' }}>VERSUS</h3> */}
           <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>
               You have <span style={{ fontWeight: 'bold' }}>five chances</span> to guess the game of the day – a matchup happening today in the NFL, NBA, NHL, or MLB.
             </p>
             <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>
-            After each guess, hints will appear. If your guess shares a <span style={{ fontWeight: 'bold' }}>league</span>, <span style={{ fontWeight: 'bold' }}>region</span>, or <span style={{ fontWeight: 'bold' }}>primary color</span> with either team in the matchup, clues will be revealed. 
+            After each guess, hints will appear. If your guess shares a <span style={{ fontWeight: 'bold' }}>league</span>, <span style={{ fontWeight: 'bold' }}>region</span>, or <span style={{ fontWeight: 'bold' }}>primary color</span> with either team in the matchup, clues will be revealed in the small squares. 
             </p>
-            <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>Exact matches will appear in <span style={{ color: 'green' }}>green</span>, and partial matches (home/away incorrect only) in <span style={{ color: 'yellow' }}>yellow</span>.</p>
-          <button className="btn btn-dark" style={{ fontWeight: 'bold' }}>Let's Play</button>
+            <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>Exact matches will have a <span style={{ color: 'lightgreen' }}>green</span> outline and partial matches (home/away incorrect only) will have <span style={{ color: 'LemonChiffon' }}>yellow</span>.
+            </p>
+          <button className="btn btn-light" style={{ fontWeight: 'bold' }}>Let's Go</button>
         </div>
       </div>
     </div>
