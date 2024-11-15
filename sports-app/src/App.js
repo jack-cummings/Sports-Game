@@ -106,27 +106,27 @@ function App() {
       const matches_b2 = findMatchingKeys(guessTeam2, ansTeam2)
 
       // Yellow Matches- partial correct
-      // const yellows_b1 = findMatchingKeys(guessTeam1, ansTeam2)
-      // const yellows_b2 = findMatchingKeys(guessTeam2, ansTeam1)
+      const yellows_b1 = findMatchingKeys(guessTeam1, ansTeam2)
+      const yellows_b2 = findMatchingKeys(guessTeam2, ansTeam1)
 
       // Set new small box values
      
-      // // Yellows
-      // yellows_b1.forEach((e) => {
-      //   if (e === "sport") {setB1Sport(guessTeam1[e]); setB1SportOut('LemonChiffon')}
-      //   if (e === "region") {setB1Loc(guessTeam1[e]); setB1LocOut('LemonChiffon')}
-      //   if (e === "color_1") {setB1Col1(guessTeam1[e]); setB1Col1Out('LemonChiffon')}
-      //   if (e === "color_2") {setB1Col2(guessTeam1[e]); setB1Col2Out('LemonChiffon')}
-      //   // if (e === "team") {setCurTeam1(guessTeam1[e])}
-      // })
+      // Yellows
+      yellows_b1.forEach((e) => {
+        if (e === "sport") {setB1Sport(guessTeam1[e]); setB1SportOut('LemonChiffon')}
+        if (e === "region") {setB1Loc(guessTeam1[e]); setB1LocOut('LemonChiffon')}
+        if (e === "color_1") {setB1Col1(guessTeam1[e]); setB1Col1Out('LemonChiffon')}
+        if (e === "color_2") {setB1Col2(guessTeam1[e]); setB1Col2Out('LemonChiffon')}
+        // if (e === "team") {setCurTeam1(guessTeam1[e])}
+      })
 
-      // yellows_b2.forEach((e) => {
-      //   if (e === "sport") {setB2Sport(guessTeam2[e]); setB2SportOut('LemonChiffon')}
-      //   if (e === "region") {setB2Loc(guessTeam2[e]); setB2LocOut('LemonChiffon')}
-      //   if (e === "color_1") {setB2Col1(guessTeam2[e]); setB2Col1Out('LemonChiffon')}
-      //   if (e === "color_2") {setB2Col2(guessTeam2[e]); setB2Col2Out('LemonChiffon')}
-      //   // if (e === "team") {setCurTeam2(guessTeam2[e])}
-      // })
+      yellows_b2.forEach((e) => {
+        if (e === "sport") {setB2Sport(guessTeam2[e]); setB2SportOut('LemonChiffon')}
+        if (e === "region") {setB2Loc(guessTeam2[e]); setB2LocOut('LemonChiffon')}
+        if (e === "color_1") {setB2Col1(guessTeam2[e]); setB2Col1Out('LemonChiffon')}
+        if (e === "color_2") {setB2Col2(guessTeam2[e]); setB2Col2Out('LemonChiffon')}
+        // if (e === "team") {setCurTeam2(guessTeam2[e])}
+      })
 
         // Greens
         matches_b1.forEach((e) => {
@@ -333,11 +333,12 @@ function App() {
           <h1 className="card-title text-center mb-3" style={{ fontSize: '2.5rem' }}>How to Play</h1>
           <h3 className="card-title text-center mb-3" style={{ fontSize: '2rem' }}>VERSUS</h3>
           <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>
-            You have <span style={{ fontWeight: 'bold' }}>five chances</span> to guess the game of the day – a matchup happening today in the NFL, NBA, NHL, or MLB.
-          </p>
-          <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>
-            After each guess, hints will appear to guide you. If your guess shares the same <span style={{ fontWeight: 'bold' }}>league</span>, <span style={{ fontWeight: 'bold' }}>region</span>, or <span style={{ fontWeight: 'bold' }}>primary color</span> with the correct team, those clues will be revealed to help you narrow it down.
-          </p>
+              You have <span style={{ fontWeight: 'bold' }}>five chances</span> to guess the game of the day – a matchup happening today in the NFL, NBA, NHL, or MLB.
+            </p>
+            <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>
+            After each guess, hints will appear. If your guess shares a <span style={{ fontWeight: 'bold' }}>league</span>, <span style={{ fontWeight: 'bold' }}>region</span>, or <span style={{ fontWeight: 'bold' }}>primary color</span> with either team in the matchup, clues will be revealed. 
+            </p>
+            <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>Exact matches will appear in <span style={{ color: 'green' }}>green</span>, and partial matches (home/away incorrect only) in <span style={{ color: 'yellow' }}>yellow</span>.</p>
           <button className="btn btn-dark" style={{ fontWeight: 'bold' }}>Let's Play</button>
         </div>
       </div>
