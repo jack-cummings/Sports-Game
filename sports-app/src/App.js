@@ -13,8 +13,11 @@ function App() {
   const [curModal,setCurModal] = useState()
   const [guessCount, setGuessCount] = useState(0)
   const [isCorrect, setIsCorrect] = useState(0)
-  const [isB1Correct, setIsB1Correct] = useState() // color
-  const [isB2Correct, setIsB2Correct] = useState() //color
+  // const [isB1Correct, setIsB1Correct] = useState(false) 
+  // const [isB2Correct, setIsB2Correct] = useState(false) //color
+  const [b1Outline, setB1Outline] = useState() 
+  const [b2Outline, setB2Outline] = useState() // color
+
   const [openEndModal, setOpenEndModal] = useState(false)
   const endModalVis = openEndModal===true
   const buttonVis = curTeam1 !== 'Guess Team' && curTeam2 !== 'Guess Team';
@@ -103,27 +106,27 @@ function App() {
       const matches_b2 = findMatchingKeys(guessTeam2, ansTeam2)
 
       // Yellow Matches- partial correct
-      const yellows_b1 = findMatchingKeys(guessTeam1, ansTeam2)
-      const yellows_b2 = findMatchingKeys(guessTeam2, ansTeam1)
+      // const yellows_b1 = findMatchingKeys(guessTeam1, ansTeam2)
+      // const yellows_b2 = findMatchingKeys(guessTeam2, ansTeam1)
 
       // Set new small box values
      
-      // Yellows
-      yellows_b1.forEach((e) => {
-        if (e === "sport") {setB1Sport(guessTeam1[e]); setB1SportOut('LemonChiffon')}
-        if (e === "region") {setB1Loc(guessTeam1[e]); setB1LocOut('LemonChiffon')}
-        if (e === "color_1") {setB1Col1(guessTeam1[e]); setB1Col1Out('LemonChiffon')}
-        if (e === "color_2") {setB1Col2(guessTeam1[e]); setB1Col2Out('LemonChiffon')}
-        // if (e === "team") {setCurTeam1(guessTeam1[e])}
-      })
+      // // Yellows
+      // yellows_b1.forEach((e) => {
+      //   if (e === "sport") {setB1Sport(guessTeam1[e]); setB1SportOut('LemonChiffon')}
+      //   if (e === "region") {setB1Loc(guessTeam1[e]); setB1LocOut('LemonChiffon')}
+      //   if (e === "color_1") {setB1Col1(guessTeam1[e]); setB1Col1Out('LemonChiffon')}
+      //   if (e === "color_2") {setB1Col2(guessTeam1[e]); setB1Col2Out('LemonChiffon')}
+      //   // if (e === "team") {setCurTeam1(guessTeam1[e])}
+      // })
 
-      yellows_b2.forEach((e) => {
-        if (e === "sport") {setB2Sport(guessTeam2[e]); setB2SportOut('LemonChiffon')}
-        if (e === "region") {setB2Loc(guessTeam2[e]); setB2LocOut('LemonChiffon')}
-        if (e === "color_1") {setB2Col1(guessTeam2[e]); setB2Col1Out('LemonChiffon')}
-        if (e === "color_2") {setB2Col2(guessTeam2[e]); setB2Col2Out('LemonChiffon')}
-        // if (e === "team") {setCurTeam2(guessTeam2[e])}
-      })
+      // yellows_b2.forEach((e) => {
+      //   if (e === "sport") {setB2Sport(guessTeam2[e]); setB2SportOut('LemonChiffon')}
+      //   if (e === "region") {setB2Loc(guessTeam2[e]); setB2LocOut('LemonChiffon')}
+      //   if (e === "color_1") {setB2Col1(guessTeam2[e]); setB2Col1Out('LemonChiffon')}
+      //   if (e === "color_2") {setB2Col2(guessTeam2[e]); setB2Col2Out('LemonChiffon')}
+      //   // if (e === "team") {setCurTeam2(guessTeam2[e])}
+      // })
 
         // Greens
         matches_b1.forEach((e) => {
@@ -162,14 +165,17 @@ function App() {
       if (ansTeam1 === guessTeam1 && ansTeam2 === guessTeam2) {setIsCorrect(1);}
       setCurTeam1(ansTeam1 !== guessTeam1 ? 'Guess Team' : ansTeam1.team);
       setCurTeam2(ansTeam2 !== guessTeam2 ? 'Guess Team' : ansTeam2.team);
-      if (ansTeam1===guessTeam1) {setIsB1Correct('lightgreen')}
-      if (ansTeam2===guessTeam2) {setIsB2Correct('lightgreen')}
+      if (ansTeam1===guessTeam1) {setB1Outline('lightgreen')}
+      if (ansTeam2===guessTeam2) {setB2Outline('lightgreen')}
       // const result = (ansTeam1 === guessTeam1 && ansTeam2 === guessTeam2) ? '✅' : '❌';
       // const result1 = (ansTeam1 === guessTeam1) ? '✅' : '❌';
       // const result2 = (ansTeam2 === guessTeam2) ? '✅' : '❌';
       // updateGuess(`${result1} ${guessTeam1.team} VS ${result2} ${guessTeam2.team}`)
-
-      updateGuess(`${guessTeam1.team} VS ${guessTeam2.team}`)
+      // const result1 = (ansTeam1 === guessTeam1) ? 'lightgreen' : 'lightcoral';
+      // const result2 = (ansTeam2 === guessTeam2) ? 'lightgreen' : 'lightcoral';
+      
+      // updateGuess([`${guessTeam1.team} VS ${guessTeam2.team}`,{isB1Correct},{isB2Correct}])
+      updateGuess([`${guessTeam1.team} VS ${guessTeam2.team}`, ansTeam1 === guessTeam1, ansTeam2 === guessTeam2]);
       setGuessCount(guessCount+1)
       if (guessCount > 3) {setOpenEndModal(true)}
       if (ansTeam1 === guessTeam1 && ansTeam2 === guessTeam2) {setOpenEndModal(true)}
@@ -185,7 +191,7 @@ function App() {
       <div className="container text-center mt-2">
       <div className="row">
         <div className="col-6">
-          <div className="large-square" onClick={() => handleBoxClick('1')} style= {{borderColor: `${isB1Correct}`, borderWidth: '2px', borderStyle: 'solid' }}>{curTeam1}</div>
+          <div className="large-square" onClick={() => handleBoxClick('1')} style= {{borderColor: `${b1Outline}`, borderWidth: '2px', borderStyle: 'solid' }}>{curTeam1}</div>
           <div className='text-sm'>HOME</div>
           <div className="d-flex justify-content-center mt-1">
             <div className="small-square" style= {{borderColor: `${B1SportOut}`, borderWidth: '2px', borderStyle: 'solid' }}>{B1Sport}</div>
@@ -199,7 +205,7 @@ function App() {
 
         
         <div className="col-6">
-          <div className="large-square" onClick={() => handleBoxClick('2')} style= {{borderColor: `${isB2Correct}`, borderWidth: '2px', borderStyle: 'solid' }}>{curTeam2}</div>
+          <div className="large-square" onClick={() => handleBoxClick('2')} style= {{borderColor: `${b2Outline}`, borderWidth: '2px', borderStyle: 'solid' }}>{curTeam2}</div>
           <div className='text-sm'>AWAY</div>
           <div className="d-flex justify-content-center mt-1">
           <div className="small-square" style= {{borderColor: `${B2SportOut}`, borderWidth: '2px', borderStyle: 'solid' }}>{B2Sport}</div>
@@ -221,22 +227,39 @@ function App() {
           </tr> */}
         </thead>
         <tbody>
-          <tr >
-            <td style={{color: isCorrect ===1 ? 'lightgreen': 'lightcoral'}}>{guesses[0]}</td>
-          </tr>
-          <tr>
-            <td style={{color: isCorrect ===1 ? 'lightgreen': 'lightcoral'}}>{guesses[1]}</td>
-          </tr>
-          <tr>
-            <td style={{color: isCorrect ===1 ? 'lightgreen': 'lightcoral'}}>{guesses[2]}</td>
-          </tr>
-          <tr>
-            <td style={{color: isCorrect ===1 ? 'lightgreen': 'lightcoral'}}>{guesses[3]}</td>
-          </tr>
-          <tr>
-            <td style={{color: isCorrect ===1 ? 'lightgreen': 'lightcoral'}}>{guesses[4]}</td>
-          </tr>
+          {Array.from({ length: 5 }).map((_, index) => {
+            const guess = guesses[index];
+
+            // If guess is empty or malformed, return an empty row
+            if (guess === '' || guess.length !== 3) {
+              return (
+                <tr key={index}>
+                  <td></td> {/* Empty cell */}
+                </tr>
+              );
+            }
+
+            // Destructure the guess array into match string and boolean correctness values
+            const [match, isB1Correct, isB2Correct] = guess;
+            const [team1, team2] = match.split(' VS '); // Split match string into team names
+
+            // Assign colors based on correctness (lightgreen if correct, lightcoral if incorrect)
+            const colorTeam1 = isB1Correct ? 'lightgreen' : 'lightcoral';
+            const colorTeam2 = isB2Correct ? 'lightgreen' : 'lightcoral';
+
+            return (
+              <tr key={index}>
+                <td>
+                  <span style={{ color: colorTeam1 }}>{team1}</span>
+                  {' VS '}
+                  <span style={{ color: colorTeam2 }}>{team2}</span>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
+
+
       </table>
       {buttonVis && 
         (<button type="button" class="btn btn-outline-dark" onClick={checkGuess} >Submit</button>)}
@@ -245,10 +268,10 @@ function App() {
     <>
       <div className="modal-overlay">
       <div className="container rounded text-center mt-2" style={{
-          borderColor: 'black',
-          borderWidth: '2px',
+          borderColor: 'white',
+          borderWidth: '1px',
           borderStyle: 'solid',
-          backgroundColor: 'dimgrey',
+          backgroundColor: 'black',
           padding: '10px',
           display: 'flex',
           justifyContent: 'center',
@@ -256,31 +279,43 @@ function App() {
           maxWidth: '80%' ,
           flexDirection: 'column', // Stack items vertically
         }}>
-        <div className="text-white  " style={{ marginBottom: '2px' }}>{isCorrect ? 'Great Job!': "Better luck tomorrow"}</div>
+        
+        <div className="text-white" style={{ marginBottom: '6px' }}>The game of the day is...</div>
         <div className="h5 text-center" style={{ marginBottom: '2px' }}>{teams_correct[0]+ ' VS ' + teams_correct[1]}</div>
         <div className="small text-center" style={{ marginBottom: '6px' }}>{game_time}</div>
 
         <div className="d-flex justify-content-center mt-1">
-          <div className="h6 text-center mx-2">HOME</div>
+            <div className="h6 text-center mx-2">HOME</div>
             {[0, 1, 2, 3, 4].map((index) => (
-              <div key={index} className="xs-square mx-1" style={{
-                  backgroundColor: guesses[index] 
-                      ? (guesses[index].split(' VS ')[0] === teams_correct[0] ? "lightgreen" : "lightcoral") 
-                      : "grey"}}></div>
-            ))}
-          </div>
-          
-          <div className="d-flex justify-content-center mt-1">
-          <div className="h6 text-center mx-2">AWAY</div>
-            {[0, 1, 2, 3, 4].map((index) => (
-                <div key={index} className="xs-square mx-1" style={{
-                  backgroundColor: guesses[index] 
-                      ? (guesses[index].split(' VS ')[1] === teams_correct[1] ? "lightgreen" : "lightcoral") 
-                      : "grey"
+              <div
+                key={index}
+                className="xs-square mx-1"
+                style={{
+                  backgroundColor: guesses[index][0]
+                    ? (guesses[index][0].split(' VS ')[0] === teams_correct[0] ? "lightgreen" : "lightcoral")
+                    : "grey"
                 }}
               ></div>
             ))}
           </div>
+
+          <div className="d-flex justify-content-center mt-1">
+            <div className="h6 text-center mx-2">AWAY</div>
+            {[0, 1, 2, 3, 4].map((index) => (
+              <div
+                key={index}
+                className="xs-square mx-1"
+                style={{
+                  backgroundColor: guesses[index][0]
+                    ? (guesses[index][0].split(' VS ')[1] === teams_correct[1] ? "lightgreen" : "lightcoral")
+                    : "grey"
+                }}
+              ></div>
+            ))}
+          </div>
+
+
+          <div className="text-white  " style={{ marginBottom: '2px' }}>{isCorrect ? "You're a real degen": "Better luck tomorrow"}</div>
         </div>
       </div>
 
@@ -288,28 +323,28 @@ function App() {
 )}
 </div>
 
+
 {intromodalOpen && (
   <>
-    <div className="modal-backdrop fade show --black" onClick={closeintroModal}></div>
+    <div className="modal-backdrop fade show" onClick={closeintroModal}></div>
     <div className="modal show" style={{ display: 'block' }} onClick={(e) => e.stopPropagation()}>
       <div className="popup-overlay d-flex justify-content-center align-items-center" onClick={closeintroModal}>
-        <div className="popup-content card bg-dark text-light p-4 shadow-lg rounded">
-          <h2 className="card-title text-center mb-3">How to Play</h2>
-          <p className="card-text mb-3">
-            You have five chances to guess the game of the day- a matchup taking place today in the NFL, NBA, NHL or MLB.
+        <div className="popup-content card bg-dark text-light p-4 shadow-lg rounded animate__animated animate__fadeIn">
+          <h1 className="card-title text-center mb-3" style={{ fontSize: '2.5rem' }}>How to Play</h1>
+          <h3 className="card-title text-center mb-3" style={{ fontSize: '2rem' }}>VERSUS</h3>
+          <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>
+            You have <span style={{ fontWeight: 'bold' }}>five chances</span> to guess the game of the day – a matchup happening today in the NFL, NBA, NHL, or MLB.
           </p>
-          <p className="card-text mb-3">
-            If a team that you guess is in the same league, the same region of the US, or has one of the same primary colors as the correct team, those hints will appear on the board. 
+          <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>
+            After each guess, hints will appear to guide you. If your guess shares the same <span style={{ fontWeight: 'bold' }}>league</span>, <span style={{ fontWeight: 'bold' }}>region</span>, or <span style={{ fontWeight: 'bold' }}>primary color</span> with the correct team, those clues will be revealed to help you narrow it down.
           </p>
-          <p className="card-text mb-3">
-            A green box means you got the correct attribute and team. A yellow box means that the attribute you guessed matches one of the correct teams, just not the one you guessed.
-          </p>
-          <button className="btn btn-dark">Let's Play</button>
+          <button className="btn btn-dark" style={{ fontWeight: 'bold' }}>Let's Play</button>
         </div>
       </div>
     </div>
   </>
 )}
+
 
    
 
