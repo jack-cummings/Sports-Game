@@ -339,7 +339,7 @@ function App() {
             <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>
             After each guess, hints will appear. If your guess shares a <span style={{ fontWeight: 'bold' }}>league</span>, <span style={{ fontWeight: 'bold' }}>region</span>, or <span style={{ fontWeight: 'bold' }}>primary color</span> with either team in the matchup, clues will be revealed in the small squares. 
             </p>
-            <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>Exact matches will have a <span style={{ color: 'lightgreen' }}>green</span> outline and partial matches (home/away incorrect only) will have <span style={{ color: 'LemonChiffon' }}>yellow</span>.
+            <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>Pay attenetion to the outline color of each clue- espicially color clues- exact matches will have a <span style={{ color: 'lightgreen' }}>green</span> outline and partial matches (home/away incorrect only) will have <span style={{ color: 'LemonChiffon' }}>yellow</span>.
             </p>
           <button className="btn btn-light" style={{ fontWeight: 'bold' }}>Let's Go</button>
         </div>

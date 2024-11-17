@@ -10,5 +10,4 @@ export const game_list = [
     ["11/22/2024", "Boston Celtics", "Washington Wizards", "Washington, DC"],
     ["11/23/2024", "Vegas Golden Knights", "Montreal Canadiens", "Montreal, QC"],
     ["11/24/2024", "Minnesota Vikings", "Chicago Bears", "Chicago, IL"],
-    
 ]
