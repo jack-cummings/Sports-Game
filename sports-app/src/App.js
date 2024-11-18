@@ -14,7 +14,7 @@ function App() {
   const [guessCount, setGuessCount] = useState(0)
   const [isCorrect, setIsCorrect] = useState(0)
   // const [isB1Correct, setIsB1Correct] = useState(false) 
-  // const [isB2Correct, setIsB2Correct] = useState(false) //color
+  // const [isB2Correct, setIsB2Correct] = useState(false)
   const [b1Outline, setB1Outline] = useState() 
   const [b2Outline, setB2Outline] = useState() // color
 
@@ -106,8 +106,12 @@ function App() {
       const matches_b2 = findMatchingKeys(guessTeam2, ansTeam2)
 
       // Yellow Matches- partial correct
-      const yellows_b1 = findMatchingKeys(guessTeam1, ansTeam2)
-      const yellows_b2 = findMatchingKeys(guessTeam2, ansTeam1)
+      const yellows_b1_raw = findMatchingKeys(guessTeam1, ansTeam2)
+      const yellows_b2_raw = findMatchingKeys(guessTeam2, ansTeam1)
+      // remove yellows if already green in other box
+      const yellows_b1 = yellows_b1_raw.filter(item => !matches_b2.includes(item))
+      const yellows_b2 = yellows_b2_raw.filter(item => !matches_b1.includes(item))
+
 
       // Set new small box values
      
@@ -339,7 +343,7 @@ function App() {
             <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>
             After each guess, hints will appear. If your guess shares a <span style={{ fontWeight: 'bold' }}>league</span>, <span style={{ fontWeight: 'bold' }}>region</span>, or <span style={{ fontWeight: 'bold' }}>primary color</span> with either team in the matchup, clues will be revealed in the small squares. 
             </p>
-            <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>Pay attenetion to the outline color of each clue- espicially color clues- exact matches will have a <span style={{ color: 'lightgreen' }}>green</span> outline and partial matches (home/away incorrect only) will have <span style={{ color: 'LemonChiffon' }}>yellow</span>.
+            <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>Exact matches will be outlined in <span style={{ color: 'lightgreen' }}>green</span> and partial matches (home/away incorrect only) in <span style={{ color: 'LemonChiffon' }}>yellow</span>.
             </p>
           <button className="btn btn-light" style={{ fontWeight: 'bold' }}>Let's Go</button>
         </div>
