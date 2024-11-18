@@ -338,12 +338,29 @@ function App() {
           <h1 className="card-title text-center mb-3" style={{ fontSize: '2.5rem' }}>How to Play</h1>
           {/* <h3 className="card-title text-center mb-3" style={{ fontSize: '2rem' }}>VERSUS</h3> */}
           <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>
-              You have <span style={{ fontWeight: 'bold' }}>five chances</span> to guess the game of the day – a matchup happening today in the NFL, NBA, NHL, or MLB.
+              You have <strong>five chances</strong> to guess the <strong>VERSUS Game of the Day</strong>
             </p>
-            <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>
-            After each guess, hints will appear. If your guess shares a <span style={{ fontWeight: 'bold' }}>league</span>, <span style={{ fontWeight: 'bold' }}>region</span>, or <span style={{ fontWeight: 'bold' }}>primary color</span> with either team in the matchup, clues will be revealed in the small squares. 
+            {/* <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>
+            After each guess, hints will appear. If your guess shares a <span style={{ fontWeight: 'bold' }}>league</span>, <span style={{ fontWeight: 'bold' }}>region</span>, or <span style={{ fontWeight: 'bold' }}>primary color</span> with either team in the matchup, the tile coresponding to that attribute will be revieled.  
+            </p> */}
+            <p className="card-text mb-1">
+              If your guess shares a
             </p>
-            <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>Exact matches will be outlined in <span style={{ color: 'lightgreen' }}>green</span> and partial matches (home/away incorrect only) in <span style={{ color: 'LemonChiffon' }}>yellow</span>.
+            <div class="formatted-list">
+              <p><strong>League:</strong> NFL, NBA, NHL, MLB</p>
+              <p><strong>Region:</strong> Northeast (NE), South (S), Midwest (MW), West (W) <strong>OR</strong></p>
+              <p><strong>Primary Color</strong></p>
+            </div>
+            <p className="card-text mt-1" >With a team in the matchup, the coresponding tile is revealed.</p>
+            <div className="d-flex justify-content-center mt-1">
+            <div className="small-square" style= {{borderColor: `lightgreen`, borderWidth: '2px', borderStyle: 'solid' }}>NFL</div>
+            <div className="small-square" style= {{borderColor: `LemonChiffon`, borderWidth: '2px', borderStyle: 'solid' }}>S</div>
+            <div className= "small-square">
+              <div className="triangle top-left" style= {{borderColor: `lightgreen`, borderWidth: '2px', borderStyle: 'solid', backgroundColor: `darkBlue`}}></div>
+              <div className="triangle bottom-right" style= {{borderColor: `LemonChiffon`, borderWidth: '2px', borderStyle: 'solid', backgroundColor: `red`}}></div>
+                </div>
+            </div>
+            <p className="card-text m-3">Tiles with exact matches are outlined in <span style={{ color: 'lightgreen' }}>green</span> while partial matches (home/away incorrect only) are <span style={{ color: 'LemonChiffon' }}>yellow</span>.
             </p>
           <button className="btn btn-light" style={{ fontWeight: 'bold' }}>Let's Go</button>
         </div>
@@ -422,9 +439,12 @@ function App() {
           </div>
         </>
       )}
-      <div className="text-center text-light py-3" onClick={openintroModal}>
+      <div className="text-center py-3" onClick={openintroModal}>
         <img src="./logo_v.jpeg" alt="footer logo" style={{ maxHeight: '50px' }} />
-        <p>&copy; Play Versus </p>
+        <p className="text-light m-0">Help</p>
+        <p className="text-light m-0">&copy; Play Versus</p>
+
+
       </div>
 
 

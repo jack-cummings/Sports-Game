@@ -12289,3 +12289,6 @@ legend {
   bottom: 0px;
 }
 
+.formatted-list p {
+  margin: 5px 0;
+}

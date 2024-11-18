@@ -129,3 +129,47 @@ if (label.startsWith('gt2')){
 //   <div className="xs-square mx-1" style={{backgroundColor: guesses[2].split(' VS ')[0]===teams_correct[0] ? "lightgreen" : "lightcoral"}} ></div>
 //   <div className= "xs-square mx-1" style={{backgroundColor: guesses[3].split(' VS ')[0]===teams_correct[0] ? "lightgreen" : "lightcoral"}} ></div>
 //   <div className= "xs-square mx-1" style={{backgroundColor: guesses[4].split(' VS ')[0]===teams_correct[0] ? "lightgreen" : "lightcoral"}} ></div>
+
+
+{/* <tbody>
+<tr >
+  <td style={{color: isCorrect ===1 ? 'lightgreen': 'lightcoral'}}>{guesses[0]}</td>
+</tr>
+<tr>
+  <td style={{color: isCorrect ===1 ? 'lightgreen': 'lightcoral'}}>{guesses[1]}</td>
+</tr>
+<tr>
+  <td style={{color: isCorrect ===1 ? 'lightgreen': 'lightcoral'}}>{guesses[2]}</td>
+</tr>
+<tr>
+  <td style={{color: isCorrect ===1 ? 'lightgreen': 'lightcoral'}}>{guesses[3]}</td>
+</tr>
+<tr>
+  <td style={{color: isCorrect ===1 ? 'lightgreen': 'lightcoral'}}>{guesses[4]}</td>
+</tr>
+</tbody> */}
+
+{intromodalOpen && (
+  <>
+    <div className="modal-backdrop fade show" onClick={closeintroModal}></div>
+    <div className="modal show" style={{ display: 'block' }} onClick={(e) => e.stopPropagation()}>
+      <div className="popup-overlay d-flex justify-content-center align-items-center" onClick={closeintroModal}>
+        <div className="popup-content card bg-dark text-light p-4 shadow-lg rounded">
+        <h1 className="card-title text-center mb-3">VERSUS</h1>
+          <h3 className="card-title text-center mb-3">How to Play</h3>
+          <p className="card-text mb-3">
+            You have five chances to guess the game of the day – a matchup happening today in the NFL, NBA, NHL, or MLB.
+          </p>
+          <p className="card-text mb-3">
+            After each guess, hints will appear to guide you. If your guess shares the same league, region, or primary color with the correct teams, those clues will be revealed to help you narrow it down.
+          </p>
+
+          {/* <p className="card-text mb-3">
+            A green box means you got the correct attribute and team. A yellow box means that the attribute you guessed matches one of the correct teams, just not the one you guessed.
+          </p> */}
+          <button className="btn btn-dark">Let's Play</button>
+        </div>
+      </div>
+    </div>
+  </>
+)}
