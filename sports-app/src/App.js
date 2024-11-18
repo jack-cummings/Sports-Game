@@ -351,7 +351,7 @@ function App() {
               <p><strong>Region:</strong> Northeast (NE), South (S), Midwest (MW), West (W) <strong>OR</strong></p>
               <p><strong>Primary Color</strong></p>
             </div>
-            <p className="card-text mt-1" >With a team in the matchup, the coresponding tile is revealed.</p>
+            <p className="card-text mt-1" >With a team in tonight's matchup, the coresponding tile is revealed.</p>
             <div className="d-flex justify-content-center mt-1">
             <div className="small-square" style= {{borderColor: `lightgreen`, borderWidth: '2px', borderStyle: 'solid' }}>NFL</div>
             <div className="small-square" style= {{borderColor: `LemonChiffon`, borderWidth: '2px', borderStyle: 'solid' }}>S</div>
