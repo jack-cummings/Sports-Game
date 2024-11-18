@@ -360,7 +360,7 @@ function App() {
               <div className="triangle bottom-right" style= {{borderColor: `LemonChiffon`, borderWidth: '2px', borderStyle: 'solid', backgroundColor: `red`}}></div>
                 </div>
             </div>
-            <p className="card-text m-3">Tiles with exact matches are outlined in <span style={{ color: 'lightgreen' }}>green</span> while partial matches (home/away incorrect only) are <span style={{ color: 'LemonChiffon' }}>yellow</span>.
+            <p className="card-text m-2">Correct tiles are outlined in <span style={{ color: 'lightgreen' }}>green</span> while partialy correct (home/away incorrect only) are <span style={{ color: 'LemonChiffon' }}>yellow</span>.
             </p>
           <button className="btn btn-light" style={{ fontWeight: 'bold' }}>Let's Go</button>
         </div>
