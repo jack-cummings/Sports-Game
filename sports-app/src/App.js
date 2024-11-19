@@ -87,6 +87,26 @@ function App() {
 
     const checkGuess = () => {
 
+      // Reset all boxes
+      setB1Sport('');
+      setB1Loc('');
+      setB1Col1('');
+      setB1Col2('');
+      setB1SportOut('white');
+      setB1LocOut('white');
+      setB1Col1Out('white');
+      setB1Col2Out('white');
+    
+      setB2Sport('');
+      setB2Loc('');
+      setB2Col1('');
+      setB2Col2('');
+      setB2SportOut('white');
+      setB2LocOut('white');
+      setB2Col1Out('white');
+      setB2Col2Out('white');
+
+
       function findMatchingKeys(obj1, obj2) {
         let matchingKeys = [];
     
@@ -111,6 +131,7 @@ function App() {
       // remove yellows if already green in other box
       const yellows_b1 = yellows_b1_raw.filter(item => !matches_b2.includes(item))
       const yellows_b2 = yellows_b2_raw.filter(item => !matches_b1.includes(item))
+      console.log(yellows_b1)
 
 
       // Set new small box values
@@ -247,9 +268,17 @@ function App() {
             const [match, isB1Correct, isB2Correct] = guess;
             const [team1, team2] = match.split(' VS '); // Split match string into team names
 
-            // Assign colors based on correctness (lightgreen if correct, lightcoral if incorrect)
-            const colorTeam1 = isB1Correct ? 'lightgreen' : 'lightcoral';
-            const colorTeam2 = isB2Correct ? 'lightgreen' : 'lightcoral';
+            // // Assign colors based on correctness (lightgreen if correct, lightcoral if incorrect)
+            // const colorTeam1 = isB1Correct ? 'lightgreen' : 'lightcoral';
+            // const colorTeam2 = isB2Correct ? 'lightgreen' : 'lightcoral';
+
+            // Check if team1 matches ansteam2 or team2 matches ansteam1
+            const isSpecialCondition1 = (team1 === ansTeam2.team);
+            const isSpecialCondition2 = (team2 === ansTeam1.team);
+
+            // Assign colors based on correctness or special condition
+            const colorTeam1 = isSpecialCondition1 ? 'LemonChiffon' : (isB1Correct ? 'lightgreen' : 'lightcoral');
+            const colorTeam2 = isSpecialCondition2 ? 'LemonChiffon' : (isB2Correct ? 'lightgreen' : 'lightcoral');
 
             return (
               <tr key={index}>
@@ -351,7 +380,7 @@ function App() {
               <p><strong>Region:</strong> Northeast (NE), South (S), Midwest (MW), West (W) <strong>OR</strong></p>
               <p><strong>Primary Color</strong></p>
             </div>
-            <p className="card-text mt-1" >With a team in tonight's matchup, the coresponding tile is revealed.</p>
+            <p className="card-text mt-1" >With a team in the matchup, the coresponding tile is revealed.</p>
             <div className="d-flex justify-content-center mt-1">
             <div className="small-square" style= {{borderColor: `lightgreen`, borderWidth: '2px', borderStyle: 'solid' }}>NFL</div>
             <div className="small-square" style= {{borderColor: `LemonChiffon`, borderWidth: '2px', borderStyle: 'solid' }}>S</div>

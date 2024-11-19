@@ -173,3 +173,12 @@ if (label.startsWith('gt2')){
     </div>
   </>
 )}
+
+
+            // Check if team1 matches ansteam2 or team2 matches ansteam1
+            const isSpecialCondition1 = (team1 === ansTeam2.team);
+            const isSpecialCondition2 = (team2 === ansTeam1.team);
+
+            // Assign colors based on correctness or special condition
+            const colorTeam1 = isSpecialCondition1 ? 'LemonChiffon' : (isB1Correct ? 'lightgreen' : 'lightcoral');
+            const colorTeam2 = isSpecialCondition2 ? 'LemonChiffon' : (isB2Correct ? 'lightgreen' : 'lightcoral');
