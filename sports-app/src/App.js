@@ -111,12 +111,32 @@ function App() {
         let matchingKeys = [];
     
         for (let key in obj1) {
+            // Check for general key equality
             if (obj1[key] === obj2[key]) {
                 matchingKeys.push(key);
             }
         }
+    
+        // Special handling for color_1 and color_2
+        if (
+            obj1['color_1'] === obj2['color_1'] ||
+            obj1['color_1'] === obj2['color_2']
+        ) {
+            if (!matchingKeys.includes('color_1')) {
+                matchingKeys.push('color_1');
+            }
+        }
+        if (
+            obj1['color_2'] === obj2['color_1'] ||
+            obj1['color_2'] === obj2['color_2']
+        ) {
+            if (!matchingKeys.includes('color_2')) {
+                matchingKeys.push('color_2');
+            }
+        }
+    
         return matchingKeys;
-      }
+    }       
 
       const guessTeam1 = team_lib.find(row => row.team === curTeam1);
       const guessTeam2 = team_lib.find(row => row.team === curTeam2);
@@ -128,6 +148,10 @@ function App() {
       // Yellow Matches- partial correct
       const yellows_b1_raw = findMatchingKeys(guessTeam1, ansTeam2)
       const yellows_b2_raw = findMatchingKeys(guessTeam2, ansTeam1)
+
+      console.log(matches_b1)
+      console.log(matches_b2)
+
       // remove yellows if already green in other box
       const yellows_b1 = yellows_b1_raw.filter(item => !matches_b2.includes(item))
       const yellows_b2 = yellows_b2_raw.filter(item => !matches_b1.includes(item))
@@ -348,7 +372,7 @@ function App() {
           </div>
 
 
-          <div className="text-white  " style={{ marginBottom: '2px' }}>{isCorrect ? "You're a real degen": "Better luck tomorrow"}</div>
+          <div className="text-white  " style={{ marginBottom: '2px' }}>{isCorrect ? "Congrats! You Know Ball": "Better luck tomorrow"}</div>
         </div>
       </div>
 
@@ -367,7 +391,7 @@ function App() {
           <h1 className="card-title text-center mb-3" style={{ fontSize: '2.5rem' }}>How to Play</h1>
           {/* <h3 className="card-title text-center mb-3" style={{ fontSize: '2rem' }}>VERSUS</h3> */}
           <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>
-              You have <strong>five chances</strong> to guess the <strong>VERSUS Game of the Day</strong>
+              You have <strong>5 </strong> chances to guess today's <strong>Game of the Day</strong>
             </p>
             {/* <p className="card-text mb-3" style={{ fontSize: '1.2rem' }}>
             After each guess, hints will appear. If your guess shares a <span style={{ fontWeight: 'bold' }}>league</span>, <span style={{ fontWeight: 'bold' }}>region</span>, or <span style={{ fontWeight: 'bold' }}>primary color</span> with either team in the matchup, the tile coresponding to that attribute will be revieled.  
@@ -376,9 +400,9 @@ function App() {
               If your guess shares a
             </p>
             <div class="formatted-list">
-              <p><strong>League:</strong> NFL, NBA, NHL, MLB</p>
-              <p><strong>Region:</strong> Northeast (NE), South (S), Midwest (MW), West (W) <strong>OR</strong></p>
-              <p><strong>Primary Color</strong></p>
+              {/* <p><strong>League:</strong> NFL, NBA, NHL, MLB</p>
+              <p><strong>Region:</strong> Northeast (NE), South (S), Midwest (MW), West (W) <strong>OR</strong></p> */}
+              <p><strong>League, Region or Primary Color</strong></p>
             </div>
             <p className="card-text mt-1" >With a team in the matchup, the coresponding tile is revealed.</p>
             <div className="d-flex justify-content-center mt-1">
