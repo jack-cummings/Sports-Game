@@ -11,5 +11,7 @@ export const game_list = [
     ["11/23/2024", "Vegas Golden Knights", "Montreal Canadiens", "Montreal, QC"],
     ["11/24/2024", "Minnesota Vikings", "Chicago Bears", "Chicago, IL"],
     ["12/11/2024", "Atlanta Hawks", "New York Knicks", "New York, NY"],
-    ["12/12/2024", "Edmonton Oilers", "Minnesota Wild", "Minneapolis, MN"]
+    ["12/12/2024", "Edmonton Oilers", "Minnesota Wild", "Minneapolis, MN"],
+    ["12/13/2024", "Los Angeles Rams", "San Francisco 49ers", "Santa Clara, CA"],
+    ["12/23/2024", "New Orleans Saints", "Green Bay Packers", "Green Bay, WI"]
 ]
