@@ -31,7 +31,7 @@ jobs:
       run: |
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@users.noreply.github.com"
-        git add sports-app/game_list.js
+        git add sports-app/src/game_list.js
         git commit -m "Update game_list.js after script execution"
         git push
       env:
