@@ -3,7 +3,7 @@ name: Python Cron Job
 on:
   schedule:
     # Run at 3 AM UTC every day
-    - cron: "5 5 * * *" 
+    - cron: "5 5 * * *"
   workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
@@ -26,3 +26,13 @@ jobs:
 
     - name: Run Python script
       run: python sports-app/schedule_scrape.py
+
+    - name: Commit and push changes to game_list.js
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@users.noreply.github.com"
+        git add sports-app/game_list.js
+        git commit -m "Update game_list.js after script execution"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Auth token to push changes
