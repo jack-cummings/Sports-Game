@@ -1,4 +1,5 @@
 export const game_list = [
+    ["01/05/2025", "Miami Dolphins", "New York Jets", ""],
     ["01/04/2025", "Cleveland Browns", "Baltimore Ravens", ""],
     ["12/30/2024", "Detroit Lions", "San Francisco 49ers", ""],
     ["12/29/2024", "Atlanta Falcons", "Washington Commanders", ""],
